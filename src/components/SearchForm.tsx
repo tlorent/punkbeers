@@ -30,7 +30,10 @@ const SearchForm: FC<Props> = ({ handleSearch }) => {
             />
             <button
                 type="submit"
-                className="bg-blue-600 text-white p-3 flex items-center shadow-sm"
+                className={`${
+                    !formValue ? 'bg-blue-200' : 'bg-blue-600'
+                } text-white p-3 flex items-center shadow-sm`}
+                disabled={!formValue}
             >
                 Search
             </button>

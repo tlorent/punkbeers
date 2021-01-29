@@ -1,5 +1,5 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { BeerStateContext } from '../BeerContext';
+import React, { FC, useEffect, useState } from 'react';
+import { useStore } from '../BeerContext';
 import useLocalStorageBeers from '../hooks/useLocalStorageBeers';
 import getBeers from '../services/beers-api';
 import { Beer } from './BeerCard';
@@ -10,7 +10,7 @@ const Home: FC = () => {
     const [punkBeers, setPunkBeers] = useState<Beer[] | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [isSearching, setIsSearching] = useState(false);
-    const state = useContext(BeerStateContext);
+    const { favBeers } = useStore();
 
     useEffect(() => {
         async function fetchData() {
@@ -44,7 +44,7 @@ const Home: FC = () => {
         description,
         name,
         id,
-        fav: state.favBeers.findIndex((favBeer) => favBeer.id === id) > -1,
+        fav: favBeers.findIndex((favBeer) => favBeer.id === id) > -1,
     }));
 
     if (!beerData) return null;

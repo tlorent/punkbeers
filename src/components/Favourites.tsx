@@ -1,10 +1,10 @@
-import React, { FC, useContext } from 'react';
-import { BeerStateContext } from '../BeerContext';
+import React, { FC } from 'react';
+import { useStore } from '../BeerContext';
 import useLocalStorageBeers from '../hooks/useLocalStorageBeers';
 import BeerGrid from './BeerGrid';
 
 const Favourites: FC = () => {
-    const state = useContext(BeerStateContext);
+    const { favBeers } = useStore();
 
     useLocalStorageBeers();
 
@@ -16,7 +16,7 @@ const Favourites: FC = () => {
                     🍻
                 </span>
             </h2>
-            <BeerGrid data={state.favBeers} />
+            <BeerGrid data={favBeers} />
         </section>
     );
 };

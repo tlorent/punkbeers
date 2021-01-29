@@ -1,4 +1,10 @@
-import React, { createContext, Dispatch, FC, useReducer } from 'react';
+import React, {
+    createContext,
+    Dispatch,
+    FC,
+    useContext,
+    useReducer,
+} from 'react';
 import { Beer } from './components/BeerCard';
 import beerReducer from './reducers/beerReducer';
 
@@ -30,5 +36,13 @@ const BeerContextProvider: FC = ({ children }) => {
         </BeerDispatchContext.Provider>
     );
 };
+
+export function useStore(): State {
+    return useContext(BeerStateContext);
+}
+
+export function useDispatch(): Dispatch<Action> {
+    return useContext(BeerDispatchContext);
+}
 
 export default BeerContextProvider;

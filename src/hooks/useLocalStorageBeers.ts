@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { BeerDispatchContext } from '../BeerContext';
+import { useEffect } from 'react';
+import { useDispatch } from '../BeerContext';
 
 const useLocalStorageBeers = (): void => {
-    const dispatch = useContext(BeerDispatchContext);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const storage = localStorage.getItem('favBeers');

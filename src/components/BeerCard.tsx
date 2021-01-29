@@ -1,6 +1,6 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import ClampLines from 'react-clamp-lines';
-import { BeerDispatchContext } from '../BeerContext';
+import { useDispatch } from '../BeerContext';
 
 export type Beer = {
     image_url: string;
@@ -16,7 +16,7 @@ type Props = {
 
 const BeerCard: FC<Props> = ({ beer }) => {
     const { name, description, image_url, fav } = beer;
-    const dispatch = useContext(BeerDispatchContext);
+    const dispatch = useDispatch();
 
     const handleFav = (beer: Beer) => {
         dispatch({
